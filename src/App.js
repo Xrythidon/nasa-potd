@@ -3,13 +3,21 @@ import './App.css';
 
 import Client from "./Client"
 
+import {TitleBar} from "./components/TitleBar/titleBar"
+
 function App() {
-  Client.getApod().then( apodData => console.log(apodData.data))
+  const [apod, setApod] = useState({})
+
+  useEffect(() => {
+    Client.getApod().then(apodData => { setApod(apodData.data) })
+  }, [])
+
+  console.log(apod.title)
 
 
   return (
     <div >
-      <header >
+    <TitleBar apod={apod}/>
           {
             // TITLE BAR
             // PICTURE BAR (Inside picturebar, have pic, and directional keys)
@@ -17,7 +25,6 @@ function App() {
 
            
           }
-      </header>
     </div>
   );
 }
