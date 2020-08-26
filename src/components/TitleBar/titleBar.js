@@ -5,7 +5,7 @@ export const TitleBar = ({apod}) => {
     return (
         <div>
         <Navbar bg="light" className="justify-content-center" >
-            <Navbar.Brand href="#home">{" " + apod.title}</Navbar.Brand>
+            <Navbar.Brand>{" " + apod.title}</Navbar.Brand>
         </Navbar>
 
             

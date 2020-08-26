@@ -4,6 +4,8 @@ import './App.css';
 import Client from "./Client"
 
 import {TitleBar} from "./components/TitleBar/titleBar"
+import {PictureBar} from "./components/PictureBar/pictureBar"
+import {DescBar} from "./components/DescBar/descBar"
 
 function App() {
   const [apod, setApod] = useState({})
@@ -18,10 +20,9 @@ function App() {
   return (
     <div >
     <TitleBar apod={apod}/>
+    <PictureBar apod={apod}/>
+    <DescBar apod={apod}/>
           {
-            // TITLE BAR
-            // PICTURE BAR (Inside picturebar, have pic, and directional keys)
-            // Desc Bar (setFavButton, DatePicker, Desc)
 
            
           }
