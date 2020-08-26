@@ -1,23 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 
+import Client from "./Client"
+
 function App() {
+  Client.getApod().then( apodData => console.log(apodData.data))
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div >
+      <header >
+          {
+            // TITLE BAR
+            // PICTURE BAR (Inside picturebar, have pic, and directional keys)
+            // Desc Bar (setFavButton, DatePicker, Desc)
+
+           
+          }
       </header>
     </div>
   );
