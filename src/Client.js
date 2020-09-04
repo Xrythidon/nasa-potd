@@ -6,6 +6,6 @@ const nasaApiKey = process.env.REACT_APP_NASA_API_KEY
 
 export default {
   getApod() {
-    return axios.get(`${nasaEndpoint}planetary/apod?api_key=${nasaApiKey}`)
+    return axios.get(`${nasaEndpoint}planetary/apod?api_key=${nasaApiKey}&date=1999-08-24`)
   },
 }

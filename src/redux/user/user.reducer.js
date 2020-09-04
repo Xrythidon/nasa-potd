@@ -1,5 +1,7 @@
+import moment from "moment"
+
 const INITIAL_STATE = {
-    selectedDate: null,
+    dateSelected: moment().format("YYYY-MM-DD"),
     favPics: null
 }
 
@@ -8,7 +10,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case "SELECT_DATE":
             return {
                 ...state,
-                selectedDate: action.payload
+                dateSelected: action.payload
             }
 
         default:

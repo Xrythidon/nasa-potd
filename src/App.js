@@ -1,33 +1,44 @@
-import React, { useState, useEffect} from 'react';
-import './App.css';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import "./App.css";
 
-import Client from "./Client"
+import { TitleBar } from "./components/TitleBar/titleBar";
+import { PictureBar } from "./components/PictureBar/pictureBar";
+import { DescBar } from "./components/DescBar/descBar";
 
-import {TitleBar} from "./components/TitleBar/titleBar"
-import {PictureBar} from "./components/PictureBar/pictureBar"
-import {DescBar} from "./components/DescBar/descBar"
+import Spinner from "./components/Spinner/spinner";
 
-function App() {
-  const [apod, setApod] = useState({})
+import { fetchImage } from "./redux/apod/apod.actions";
 
+function App({ image, loading, fetchImage }) {
   useEffect(() => {
-    Client.getApod().then(apodData => { setApod(apodData.data) })
-  }, [])
-
-  console.log(apod.title)
+    fetchImage()
+  }, []);
 
 
-  return (
-    <div >
-    <TitleBar apod={apod}/>
-    <PictureBar apod={apod}/>
-    <DescBar apod={apod}/>
-          {
 
-           
-          }
+  return loading ? (
+    <Spinner/>
+  ) : (
+    <div>
+      <TitleBar apod={image} />
+      <PictureBar apod={image} />
+      <DescBar apod={image} />
+      {
+        console.log(image.title, "POTATO"),
+        console.log(loading, "loading text")
+      }
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  image: state.apod.apod,
+  loading: state.apod.loading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchImage: () => dispatch(fetchImage())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
