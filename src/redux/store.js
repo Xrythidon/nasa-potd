@@ -3,7 +3,6 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 import rootReducer from "./root-reducer";
-import {fetchImage} from "./apod/apod.actions"
 
 const middlewares = [logger,thunk];
 

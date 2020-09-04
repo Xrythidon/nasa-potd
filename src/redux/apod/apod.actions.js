@@ -9,10 +9,10 @@ export const FETCH_IMAGE_FAILURE = "FETCH_IMAGE_FAILURE"
 
 
 //ASYNC ACTION
-export const fetchImage = () => {
+export const fetchImage = (date) => {
     return dispatch => {
         dispatch(fetchImageBegin())
-        Client.getApod().then(response => {
+        Client.getApod(date).then(response => {
             const apod = response.data
             dispatch(fetchImageSuccess(apod))
         })

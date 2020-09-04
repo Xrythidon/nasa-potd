@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "react-bootstrap/Image";
 import Col from 'react-bootstrap/Col'
 
 export const Picture = ({apod}) => {
@@ -9,7 +8,7 @@ export const Picture = ({apod}) => {
         <img
           className="d-block mx-auto img-fluid w-100"
           src={apod.url}
-          alt="NASA Space Image"
+          alt="NASA Space"
         ></img>
       </Col>
     </div>

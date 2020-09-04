@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 
@@ -10,35 +10,41 @@ import Spinner from "./components/Spinner/spinner";
 
 import { fetchImage } from "./redux/apod/apod.actions";
 
-function App({ image, loading, fetchImage }) {
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
+function App({ apod, loading, fetchAPOD }) {
+  const [selectedDate, setSelectedDate] = useState(null)
+
   useEffect(() => {
-    fetchImage()
-  }, []);
+    fetchAPOD(selectedDate)
+  }, [selectedDate]);
+
+  // [] => is the state container, and it will ony refresh if airbnb is picked
 
 
+  
 
   return loading ? (
     <Spinner/>
   ) : (
     <div>
-      <TitleBar apod={image} />
-      <PictureBar apod={image} />
-      <DescBar apod={image} />
-      {
-        console.log(image.title, "POTATO"),
-        console.log(loading, "loading text")
-      }
+      <TitleBar apod={apod} />
+      <PictureBar apod={apod} />
+      <DescBar apod={apod} />
+      <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)}/>
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-  image: state.apod.apod,
+  apod: state.apod.apod,
   loading: state.apod.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchImage: () => dispatch(fetchImage())
+  fetchAPOD: (date) => dispatch(fetchImage(date))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
