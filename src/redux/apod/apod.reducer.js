@@ -1,12 +1,12 @@
 import {
-  FETCH_IMAGE_BEGIN,
-  FETCH_IMAGE_FAILURE,
-  FETCH_IMAGE_SUCCESS,
-} from "./apod.actions";
+  ApodActionTypes
+} from "./apod.types";
+
+import moment from "moment";
 
 const INITIAL_STATE = {
   apod: {},
-
+  selectedDate: moment(),
   loading: false,
   error: null,
 };
@@ -18,27 +18,39 @@ const apodReducer = (state = INITIAL_STATE, action) => {
 
   switch (type) {
 
-    case FETCH_IMAGE_BEGIN:
+    case ApodActionTypes.FETCH_IMAGE_BEGIN:
       return {
         ...state,
         loading: true,
         error: null
       };
 
-    case FETCH_IMAGE_SUCCESS:
+    case ApodActionTypes.FETCH_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
         apod: payload.apod
       };
 
-    case FETCH_IMAGE_FAILURE:
+    case ApodActionTypes.FETCH_IMAGE_FAILURE:
       return {
         ...state,
         loading: false,
         error: payload.error,
         apod: {}
       };
+
+      case ApodActionTypes.SET_CURRENT_DATE:
+        return {
+          ...state,
+          selectedDate: payload.selectedDate
+        }
+      case ApodActionTypes.NEXT_DATE_DAY:
+        return {
+          ...state,
+          selectedDate: state.selectedDate.add(1, "days")
+        }
+
 
     default:
       return state;

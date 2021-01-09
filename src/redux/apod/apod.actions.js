@@ -1,39 +1,43 @@
-import Client from "../../Client";
+import Client from "../../API/Client";
 
+import { ApodActionTypes } from "./apod.types";
 
+//
 
-export const FETCH_IMAGE_BEGIN = "FETCH_IMAGE_BEGIN"
-export const FETCH_IMAGE_SUCCESS = "FETCH_IMAGE_SUCCESS"
-export const FETCH_IMAGE_FAILURE = "FETCH_IMAGE_FAILURE"
+export const setCurrentDate = (selectedDate) => ({
+  type: ApodActionTypes.SET_CURRENT_DATE,
+  payload: { selectedDate },
+});
 
-
-
-//ASYNC ACTION
-export const fetchImage = (date) => {
-    return dispatch => {
-        dispatch(fetchImageBegin())
-        Client.getApod(date).then(response => {
-            const apod = response.data
-            dispatch(fetchImageSuccess(apod))
-        })
-        .catch(error => {
-            dispatch(fetchImageFailure(error.message))
-        })
-    }
-}
-
-
+export const nextDateDay = (selectedDate) => ({
+  type: ApodActionTypes.NEXT_DATE_DAY,
+  payload: { selectedDate },
+});
 
 export const fetchImageBegin = () => ({
-    type: FETCH_IMAGE_BEGIN
-})
+  type: ApodActionTypes.FETCH_IMAGE_BEGIN,
+});
 
 export const fetchImageSuccess = (apod) => ({
-    type: FETCH_IMAGE_SUCCESS,
-    payload: { apod }
-})
+  type: ApodActionTypes.FETCH_IMAGE_SUCCESS,
+  payload: { apod },
+});
 
 export const fetchImageFailure = (error) => ({
-    type: FETCH_IMAGE_FAILURE,
-    payload: { error }
-})
+  type: ApodActionTypes.FETCH_IMAGE_FAILURE,
+  payload: { error },
+});
+
+export const fetchImage = (date) => (dispatch, getState) => {
+  //Dispatch begin function
+  dispatch(fetchImageBegin());
+
+  Client.getApod(date)
+    .then((response) => {
+      const apod = response.data;
+      dispatch(fetchImageSuccess(apod));
+    })
+    .catch((error) => {
+      dispatch(fetchImageFailure(error.message));
+    });
+};
