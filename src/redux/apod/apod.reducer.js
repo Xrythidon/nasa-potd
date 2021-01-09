@@ -50,6 +50,11 @@ const apodReducer = (state = INITIAL_STATE, action) => {
           ...state,
           selectedDate: state.selectedDate.add(1, "days")
         }
+      case ApodActionTypes.PREV_DATE_DAY:
+        return {
+          ...state,
+          selectedDate: state.selectedDate.subtract(1, "days")
+        }
 
 
     default:

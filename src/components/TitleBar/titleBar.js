@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from "react-redux";
+
 import Navbar from 'react-bootstrap/Navbar'
 
 
-export const TitleBar = ({apod}) => {
+
+export const TitleBar = () => {
+    const apod = useSelector((state) => state.apod.apod);
 
     return (
         <div>

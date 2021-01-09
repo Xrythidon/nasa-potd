@@ -13,6 +13,10 @@ export const nextDateDay = (selectedDate) => ({
   type: ApodActionTypes.NEXT_DATE_DAY,
   payload: { selectedDate },
 });
+export const prevDateDay = (selectedDate) => ({
+  type: ApodActionTypes.PREV_DATE_DAY,
+  payload: { selectedDate },
+});
 
 export const fetchImageBegin = () => ({
   type: ApodActionTypes.FETCH_IMAGE_BEGIN,
