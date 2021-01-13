@@ -14,9 +14,7 @@ import MomentUtils from '@date-io/moment';
 ReactDOM.render(
   <Provider store={store} >
   <MuiPickersUtilsProvider utils={MomentUtils}>
-    <React.StrictMode>
       <App />
-    </React.StrictMode>
     </MuiPickersUtilsProvider>
     </Provider>,
   document.getElementById("root")
