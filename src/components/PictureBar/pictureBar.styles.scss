@@ -1,0 +1,46 @@
+
+// Picture
+
+.picture {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .picture__bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .picture__date {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+
+  
+  .picture__holder {
+    order: -1;
+    flex: 1 0 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+  
+  .picture__img {
+    max-width: 100%;
+    border-radius: 2px;
+    height: auto;
+  }
+  
+  @media (min-width: 900px) {
+
+    .picture__holder {
+      max-width: 40%;
+      margin: 0 auto;
+      order: 0;
+    }
+  }
+  

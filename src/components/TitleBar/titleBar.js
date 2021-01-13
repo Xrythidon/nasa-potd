@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from "react-redux";
-
-import Navbar from 'react-bootstrap/Navbar'
+import "./titleBar.styles.scss";
 
 
 
@@ -9,13 +8,13 @@ export const TitleBar = () => {
     const apod = useSelector((state) => state.apod.apod);
 
     return (
-        <div>
-        <Navbar bg="light" className="justify-content-center" >
-            <Navbar.Brand>{" " + apod.title}</Navbar.Brand>
-        </Navbar>
 
-
-            
+        <div className="title">
+        <div className="title__bar">
+          <h1 className="title__text">{apod.title}</h1>
         </div>
+      </div>
+
+
     )
 }

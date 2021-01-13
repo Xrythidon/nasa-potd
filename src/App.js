@@ -2,13 +2,16 @@ import React from "react";
 
 import HomePage from "./pages/home/home.page"
 
-import Index from "./templates/index.js"
+
+
+import "./styles/styles.scss";
+
 
 // Components
 
 function App() {
   return <>
-  <Index/>
+  <HomePage/>
   </>;
 }
 

@@ -1,0 +1,13 @@
+// Description
+
+@import "../../styles/variables";
+
+.desc {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .desc__text {
+    color: $secondary-font-color;
+    text-align: justify;
+  }

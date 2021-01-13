@@ -10,11 +10,7 @@ import Spinner from "../../components/Spinner/spinner";
 
 
 // Actions
-import { fetchImage, setCurrentDate } from "../../redux/apod/apod.actions";
-
-//Date
-import { DatePicker } from "@material-ui/pickers";
-
+import { fetchImage } from "../../redux/apod/apod.actions";
 
 const HomePage = () => {
 
@@ -30,22 +26,15 @@ const HomePage = () => {
 
   }, [selectedDate]);
 
-
-
-  const setSelectedDate = (date) => {
-    dispatch(setCurrentDate(date))
-  }
-
   return loading ? (
     <Spinner/>
   ) : (
     <div>
 
-      <TitleBar apod={apod} />
-      <PictureBar apod={apod} />
-      <DescBar apod={apod} />
-      <DatePicker autoOk value={selectedDate} onChange={date => setSelectedDate(date)}/>
-    </div>
+      <TitleBar  />
+      <PictureBar  />
+      <DescBar  />
+      </div>
   );
 }
 

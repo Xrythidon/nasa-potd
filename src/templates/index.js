@@ -150,7 +150,6 @@ const Index = () => {
             </h3>
             <p className="thumbnail__date">12-12-2020</p>
           </div>
-
         </div>
       </div>
     </>
