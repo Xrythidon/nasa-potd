@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { DatePicker } from "@material-ui/pickers";
 import { ThemeProvider } from "@material-ui/styles";
-import Snackbar from '@material-ui/core/Snackbar';
+import Snackbar from "@material-ui/core/Snackbar";
 
 import datePickerTheme from "./datePickerTheme";
+import closeIconTheme from "./closeIconTheme";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
+import HighlightOffRoundedIcon from "@material-ui/icons/HighlightOffRounded";
+import CloseIcon from "@material-ui/icons/Close";
 import StarfieldAnimation from "react-starfield-animation";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 import "./styles.scss";
 
@@ -35,7 +38,9 @@ const Index = () => {
 
   return (
     <>
-    <button onClick={handleClick({ vertical: 'top', horizontal: 'center' })}>Top-Center</button>
+      <button onClick={handleClick({ vertical: "top", horizontal: "center" })}>
+        Top-Center
+      </button>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}
@@ -119,106 +124,33 @@ const Index = () => {
 
       <div className="favs">
         <h2 className="favs__title"></h2>
+        <div className="favs__btnContainer">
+          <button className="btn favs__btn">Delete </button>
+          <button className="btn favs__btn favs__btn--all">Delete All</button>
+        </div>
+
         <div className="favs__container">
           <div className="thumbnail">
-           <HighlightOffRoundedIcon  style={{color: "#22a589", position: "absolute", right: "-5px", top: "-5px", fontSize: "2rem"}}/>
-            <img src={picture} alt="" className="thumbnail__img" />
+            <div className="thumbnail__imgbox">
+              <img src={picture} alt="" className="thumbnail__img" />
+              <ThemeProvider theme={closeIconTheme}>
+                <CloseIcon
+                  style={{
+                    color: "black",
+                    position: "absolute",
+                    top: "-15px",
+                    right: "-15px",
+                    fontSize: "10rem",
+                  }}
+                />
+              </ThemeProvider>
+            </div>
             <h3 className="thumbnail__title">
               A Historic Brazilian Constellation
             </h3>
             <p className="thumbnail__date">12-12-2020</p>
           </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
-          <div className="thumbnail">
-            <img src={picture} alt="" className="thumbnail__img" />
-            <h3 className="thumbnail__title">
-              A Historic Brazilian Constellation
-            </h3>
-            <p className="thumbnail__date">12-12-2020</p>
-          </div>
+
         </div>
       </div>
     </>
