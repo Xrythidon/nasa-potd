@@ -5,30 +5,36 @@ import "./fav.styles.scss";
 
 const SetFavourite = () => {
   const apod = useSelector((state) => state.apod.apod);
-  const [fav, setFav] = useState({ title: "5122", imageUrl: "", desc: "" });
+  const [fav, setFav] = useState({ title: "5122", imageUrl: "", date: "" });
 
-  const {title, explanation, url} = apod;
+  const { title, date, url } = apod;
 
   useEffect(() => {
-    setFav({title, imageUrl: url, desc: explanation})
-
-
+    setFav({ title, imageUrl: url, date });
   }, []);
 
   const handleClick = () => {
-    const newData = fav;
-
     if (localStorage.getItem("items") === null) {
       localStorage.setItem("items", "[]");
     }
-
     const oldData = JSON.parse(localStorage.getItem("items"));
-    oldData.push(newData);
+    const newData = fav;
 
+    if (oldData[0]) {
+      if (oldData.some((item) => item["title"] === newData.title)) {
+        console.log(`Duplicate entry found of ${newData.title}`);
+        //This is where you dispatch duplicate entry notification
+        return;
+      }
+    }
+
+    oldData.push(newData);
+    // This is where you can dispatch succesful favourite notification
     localStorage.setItem("items", JSON.stringify(oldData));
 
-    console.log("Stored in localStorage");
+    console.log(oldData);
   };
+
   return (
     <div className="fav">
       <button onClick={handleClick} className="btn fav__btn">
@@ -39,8 +45,6 @@ const SetFavourite = () => {
 };
 
 export default SetFavourite;
-
-
 
 /* 
 
