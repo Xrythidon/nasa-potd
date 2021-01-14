@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   apod: {},
   selectedDate: moment(),
   loading: false,
+  loaded: false,
   error: null,
 };
 
@@ -22,14 +23,16 @@ const apodReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
+        loaded: false
       };
 
     case ApodActionTypes.FETCH_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
-        apod: payload.apod
+        apod: payload.apod,
+        loaded: true,
       };
 
     case ApodActionTypes.FETCH_IMAGE_FAILURE:
@@ -37,7 +40,8 @@ const apodReducer = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: payload.error,
-        apod: {}
+        apod: {},
+        loaded: false,
       };
 
       case ApodActionTypes.SET_CURRENT_DATE:

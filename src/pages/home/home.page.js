@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { TitleBar } from "../../components/TitleBar/titleBar";
 import { PictureBar } from "../../components/PictureBar/pictureBar";
 import { DescBar } from "../../components/DescBar/descBar";
+import SetFavourite from "../../components/Favourite/setFavourite";
 import Spinner from "../../components/Spinner/spinner";
 
 
@@ -26,14 +27,17 @@ const HomePage = () => {
 
   }, [selectedDate]);
 
+
+
   return loading ? (
     <Spinner/>
   ) : (
     <div>
 
       <TitleBar  />
-      <PictureBar  />
+      <PictureBar />
       <DescBar  />
+      <SetFavourite/>
       </div>
   );
 }

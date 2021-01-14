@@ -12,6 +12,7 @@ import {
 } from "../../redux/apod/apod.actions";
 
 import { Picture } from "./picture";
+import Video from "./video";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -20,6 +21,7 @@ import DatePicker from "../DatePicker/datePicker.component.js";
 
 export const PictureBar = () => {
   const apod = useSelector((state) => state.apod.apod);
+  const loaded = useSelector((state) => state.apod.loaded);
   const selectedDate = useSelector((state) => state.apod.selectedDate);
 
   const dispatch = useDispatch();
@@ -38,11 +40,21 @@ export const PictureBar = () => {
     dispatch(fetchImage(selectedDate));
   };
 
+  const isImage = (url) => {
+    const acceptedImageUrl = "https://apod.nasa.gov/apod/image/";
+    return url.includes(acceptedImageUrl);
+  };
+
   return (
     <div className="picture">
       <div className="picture__bar">
         <div className="picture__holder">
-          <Picture apod={apod} className="picture__img" />
+          {(loaded) &&
+            (isImage(apod.url) ? (
+              <Picture apod={apod} className="picture__img" />
+            ) : (
+              <Video url={apod.url} className="picture__img"  />
+            ))}
         </div>
         <div className="picture__date">
           <div className="picture__btn-holder">
