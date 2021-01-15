@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./pictureBar.styles.scss";
@@ -10,6 +10,8 @@ import {
   prevDateDay,
   setCurrentDate,
 } from "../../redux/apod/apod.actions";
+
+import isImage from "../Utilities/isImage";
 
 import { Picture } from "./picture";
 import Video from "./video";
@@ -38,11 +40,6 @@ export const PictureBar = () => {
   const prev = () => {
     dispatch(prevDateDay());
     dispatch(fetchImage(selectedDate));
-  };
-
-  const isImage = (url) => {
-    const acceptedImageUrl = "https://apod.nasa.gov/apod/image/";
-    return url.includes(acceptedImageUrl);
   };
 
   return (

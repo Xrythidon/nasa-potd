@@ -5,20 +5,35 @@ import "./fav.styles.scss";
 
 const SetFavourite = () => {
   const apod = useSelector((state) => state.apod.apod);
-  const [fav, setFav] = useState({ title: "5122", imageUrl: "", date: "" });
+  const [fav, setFav] = useState({ title: "", imageUrl: "", date: "" });
 
   const { title, date, url } = apod;
 
   useEffect(() => {
     setFav({ title, imageUrl: url, date });
-  }, []);
+  }, [title, date, url]);
+
+  const maxCharSize = (word) => {
+    // 15 chars
+    const maxCharSize = 40;
+
+    if (word.length <= maxCharSize) {
+      return word;
+    }
+
+    let newWord = word.slice(0, maxCharSize);
+    newWord.trim();
+
+    return newWord + "...";
+  };
 
   const handleClick = () => {
     if (localStorage.getItem("items") === null) {
       localStorage.setItem("items", "[]");
     }
     const oldData = JSON.parse(localStorage.getItem("items"));
-    const newData = fav;
+    const { title, imageUrl, date } = fav;
+    const newData = { title: maxCharSize(title), imageUrl, date };
 
     if (oldData[0]) {
       if (oldData.some((item) => item["title"] === newData.title)) {
@@ -30,6 +45,7 @@ const SetFavourite = () => {
 
     oldData.push(newData);
     // This is where you can dispatch succesful favourite notification
+    // This is where you will dispatch add favourite to redux state
     localStorage.setItem("items", JSON.stringify(oldData));
 
     console.log(oldData);

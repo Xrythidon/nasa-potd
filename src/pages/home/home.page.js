@@ -7,6 +7,7 @@ import { TitleBar } from "../../components/TitleBar/titleBar";
 import { PictureBar } from "../../components/PictureBar/pictureBar";
 import { DescBar } from "../../components/DescBar/descBar";
 import SetFavourite from "../../components/Favourite/setFavourite";
+import Favourites from "../../components/Favourites/favourites";
 import Spinner from "../../components/Spinner/spinner";
 
 
@@ -15,7 +16,6 @@ import { fetchImage } from "../../redux/apod/apod.actions";
 
 const HomePage = () => {
 
-  const apod = useSelector((state) => state.apod.apod); // redux name in rootReducer
   const selectedDate = useSelector((state) => state.apod.selectedDate); // redux name in rootReducer
   const loading = useSelector((state) => state.apod.loading); // redux name in rootReducer
 
@@ -25,7 +25,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(fetchImage(selectedDate))
 
-  }, [selectedDate]);
+  }, [selectedDate, dispatch]);
 
 
 
@@ -38,6 +38,7 @@ const HomePage = () => {
       <PictureBar />
       <DescBar  />
       <SetFavourite/>
+      <Favourites />
       </div>
   );
 }

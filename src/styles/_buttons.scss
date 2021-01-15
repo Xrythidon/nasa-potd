@@ -1,0 +1,16 @@
+// Button
+
+.btn {
+    padding: 8px 14px;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    color: $primary-btn-color;
+    background-color: $secondary-btn-color;
+    transition: all 123ms;
+    font-size: 0.75rem;
+  }
+  
+  .btn:hover {
+    background: $hover-btn-color;
+    color: $primary-btn-color;
+  }

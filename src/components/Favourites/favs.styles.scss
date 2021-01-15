@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+
+
+// Favs
+.favs {
+    max-width: 90%;
+    margin: 15px auto;
+  
+    border-top: 1px solid #9ba4c1;
+  }
+  
+  .favs__btnContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    margin-top: 5px;
+  }
+  
+  .favs__btn {
+    width: 45%;
+    color: $primary-font-color;
+    font-size: 1rem;
+  
+  }
+  
+  .favs__btn--active{
+    background-color: $active-btn-color;
+    color: $primary-bg-color;
+  }
+   .favs__title {
+    margin-bottom: 15px;
+    font-weight: 300;
+    font-size: 2.4rem;
+  }
+  
+  .favs__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
+    column-gap: 10px;
+    row-gap: 15px;
+  
+    justify-content: center;
+  }
+
+  .favs__container--empty {
+    display: flex;
+    flex-direction: row;
+  }
+
+  @media (min-width: 900px) {
+    .favs__container {
+      justify-content: left;
+    }
+  }
+  

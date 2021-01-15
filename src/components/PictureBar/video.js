@@ -1,6 +1,6 @@
 import React from "react";
 
-import youtube2Thumbnail from "./youtube2Thumbnail";
+import youtube2Thumbnail from "../Utilities/youtube2Thumbnail";
 
 const Video = ({ url, className }) => {
    const src = youtube2Thumbnail(url);
