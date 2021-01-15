@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import {setFavourite} from "../../redux/favourites/favourite.actions"
 
 import "./fav.styles.scss";
 
 const SetFavourite = () => {
   const apod = useSelector((state) => state.apod.apod);
   const [fav, setFav] = useState({ title: "", imageUrl: "", date: "" });
+  const dispatch = useDispatch();
 
   const { title, date, url } = apod;
 
@@ -46,6 +49,7 @@ const SetFavourite = () => {
     oldData.push(newData);
     // This is where you can dispatch succesful favourite notification
     // This is where you will dispatch add favourite to redux state
+    dispatch(setFavourite(oldData));
     localStorage.setItem("items", JSON.stringify(oldData));
 
     console.log(oldData);

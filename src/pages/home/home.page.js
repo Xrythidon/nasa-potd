@@ -13,6 +13,7 @@ import Spinner from "../../components/Spinner/spinner";
 
 // Actions
 import { fetchImage } from "../../redux/apod/apod.actions";
+import { setFavourites } from "../../redux/favourites/favourite.actions";
 
 const HomePage = () => {
 
@@ -24,6 +25,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(fetchImage(selectedDate))
+    dispatch(setFavourites())
 
   }, [selectedDate, dispatch]);
 

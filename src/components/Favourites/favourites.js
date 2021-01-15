@@ -11,14 +11,13 @@ import "./favs.styles.scss";
 // get favourites array from localstorage
 
 const Favourites = () => {
-  const dispatch = useDispatch();
-
+  const favourites = useSelector((state) => state.fav.favourites)
   const favArray = JSON.parse(localStorage.getItem("items"));
 
-  const handleButton = () => {
-    // dispatch(fetchImage(date))
-    console.log("hit?");
-  };
+  console.log(favourites, "Favourites Redux")
+  console.log(favArray, "Favourites LocalStorage")
+
+
 
   return (
     <div className="favs">
@@ -28,9 +27,9 @@ const Favourites = () => {
         <button className="btn favs__btn favs__btn--all">Delete All</button>
       </div>
 
-      <div  className={favArray && "favs__container"}>
-        {favArray ? (
-          favArray.map((item) => {
+      <div  className={favourites && "favs__container"}>
+        {favourites ? (
+          favourites.map((item) => {
             return (
               <Thumbnail
                 key={item["imageUrl"]}
