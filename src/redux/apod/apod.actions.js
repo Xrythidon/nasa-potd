@@ -42,6 +42,7 @@ export const fetchImage = (date) => (dispatch, getState) => {
       dispatch(fetchImageSuccess(apod));
     })
     .catch((error) => {
+      console.log("catch error")
       dispatch(fetchImageFailure(error.message));
     });
 };

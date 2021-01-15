@@ -19,12 +19,11 @@ const Thumbnail = ({ imgUrl, title, date }) => {
 
   const handleButton = () => {
     dispatch(setCurrentDate(date));
-    dispatch(fetchImage(date));
+    //dispatch(fetchImage(date));
 
     // dispatch apod selectedDate
   };
 
-  const convertUrl = () => {};
 
   return (
     <div className="thumbnail" onClick={handleButton}>
