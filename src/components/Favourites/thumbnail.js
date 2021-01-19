@@ -11,6 +11,7 @@ import { ThemeProvider } from "@material-ui/styles";
 
 import CloseIcon from "@material-ui/icons/Close";
 import closeIconTheme from "./closeIconTheme";
+import moment from "moment";
 
 import "./thumbnail.styles.scss";
 
@@ -18,7 +19,7 @@ const Thumbnail = ({ imgUrl, title, date }) => {
   const dispatch = useDispatch();
 
   const handleButton = () => {
-    dispatch(setCurrentDate(date));
+    dispatch(setCurrentDate(moment(date)));
     //dispatch(fetchImage(date));
 
     // dispatch apod selectedDate
