@@ -10,6 +10,9 @@ const INITIAL_STATE = {
   loading: false,
   loaded: false,
   error: null,
+  isToday: true,
+  isNextDayToday: false,
+  isFirstApodDay: false
 };
 
 
@@ -47,17 +50,27 @@ const apodReducer = (state = INITIAL_STATE, action) => {
       case ApodActionTypes.SET_CURRENT_DATE:
         return {
           ...state,
-          selectedDate: payload.selectedDate
+          selectedDate: moment(payload.selectedDate),
+          isNextDayToday: moment(payload.selectedDate).isSame(moment().subtract(1, 'day'), "day"),
+          isToday: moment(payload.selectedDate).isSame(moment(), "day"),
+          isFirstApodDay: moment(payload.selectedDate).isSame(moment("1995-06-20"), "day")
         }
       case ApodActionTypes.NEXT_DATE_DAY:
         return {
           ...state,
-          selectedDate: state.selectedDate.add(1, "days")
+          selectedDate: state.selectedDate.add(1, "days"),
+          isNextDayToday: moment(state.selectedDate).isSame(moment().subtract(1, 'day'), "day"),
+          isToday: moment(state.selectedDate).isSame(moment(), "day"),
+          isFirstApodDay: moment(state.selectedDate).isSame(moment("1995-06-20"), "day")
         }
       case ApodActionTypes.PREV_DATE_DAY:
         return {
           ...state,
-          selectedDate: state.selectedDate.subtract(1, "days")
+          selectedDate: state.selectedDate.subtract(1, "days"),
+          isNextDayToday: moment(state.selectedDate).isSame(moment().subtract(1, 'day'), "day"),
+          isToday: moment(state.selectedDate).isSame(moment(), "day"),
+          isFirstApodDay: moment(state.selectedDate).isSame(moment("1995-06-20"), "day")
+
         }
 
 

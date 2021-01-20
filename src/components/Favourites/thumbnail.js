@@ -19,7 +19,7 @@ const Thumbnail = ({ imgUrl, title, date }) => {
   const dispatch = useDispatch();
 
   const handleButton = () => {
-    dispatch(setCurrentDate(moment(date)));
+    dispatch(setCurrentDate(date));
     //dispatch(fetchImage(date));
 
     // dispatch apod selectedDate
