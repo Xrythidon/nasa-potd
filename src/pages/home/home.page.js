@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import bgImage from "../../images/stars.jpg"
-
 // Components
 import { TitleBar } from "../../components/TitleBar/titleBar";
 import { PictureBar } from "../../components/PictureBar/pictureBar";
@@ -11,6 +10,9 @@ import SetFavourite from "../../components/Favourite/setFavourite";
 import Favourites from "../../components/Favourites/favourites";
 import Spinner from "../../components/Spinner/spinner";
 import isImage from "../../components/Utilities/isImage";
+
+// Custom Hooks
+import useProgressiveImage from "./useProgressiveImage";
 
 // Actions
 import { fetchImage } from "../../redux/apod/apod.actions";
@@ -22,15 +24,24 @@ const HomePage = () => {
   const loading = useSelector((state) => state.apod.loading); // redux name in rootReducer
   const loaded = useSelector((state) => state.apod.loaded); // redux name in rootReducer
 
+  const [firstPaint, setFirstPaint] = useState(false)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchImage(selectedDate));
     dispatch(setFavourites());
   }, [selectedDate, dispatch]);
-  
-  document.body.style.backgroundImage = loaded && (isImage(apod.url) ? `url(${apod.url})` : `url(${bgImage})`);
 
+  useEffect(() => {
+    setFirstPaint(true)
+  }, [])
+
+  
+  const loadedImage = useProgressiveImage(apod.url,"black");
+
+  document.body.style.backgroundImage =  (`url(${loadedImage})` || `black`);  
+  document.body.style.transition = firstPaint && "background 2s ease-in-out";
 
 
   return loading ? (
@@ -39,7 +50,8 @@ const HomePage = () => {
     </div>
   ) : (
 
-    <div className="">
+    <div  className="">
+
       <TitleBar />
       <PictureBar />
       <DescBar />
@@ -59,5 +71,7 @@ export default HomePage;
       <SetFavourite />
       <Favourites />
     </div>
+
+    (isImage(apod.url) ? `url(${apod.url})` : `url(${bgImage})`
 
 */
