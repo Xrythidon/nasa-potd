@@ -14,10 +14,6 @@ const Favourites = () => {
   const favourites = useSelector((state) => state.fav.favourites)
   const favArray = JSON.parse(localStorage.getItem("items"));
 
-  console.log(favourites, "Favourites Redux")
-  console.log(favArray, "Favourites LocalStorage")
-
-
 
   return (
     <div className="favs">

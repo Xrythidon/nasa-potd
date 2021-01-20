@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import bgImage from "../../images/stars.jpg"
 
 // Components
 import { TitleBar } from "../../components/TitleBar/titleBar";
@@ -9,68 +10,54 @@ import { DescBar } from "../../components/DescBar/descBar";
 import SetFavourite from "../../components/Favourite/setFavourite";
 import Favourites from "../../components/Favourites/favourites";
 import Spinner from "../../components/Spinner/spinner";
-
+import isImage from "../../components/Utilities/isImage";
 
 // Actions
 import { fetchImage } from "../../redux/apod/apod.actions";
 import { setFavourites } from "../../redux/favourites/favourite.actions";
 
 const HomePage = () => {
-
+  const apod = useSelector((state) => state.apod.apod);
   const selectedDate = useSelector((state) => state.apod.selectedDate); // redux name in rootReducer
   const loading = useSelector((state) => state.apod.loading); // redux name in rootReducer
+  const loaded = useSelector((state) => state.apod.loaded); // redux name in rootReducer
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-    dispatch(fetchImage(selectedDate))
-    dispatch(setFavourites())
-
+    dispatch(fetchImage(selectedDate));
+    dispatch(setFavourites());
   }, [selectedDate, dispatch]);
+  
+  document.body.style.backgroundImage = loaded && (isImage(apod.url) ? `url(${apod.url})` : `url(${bgImage})`);
 
 
 
   return loading ? (
-    <Spinner/>
+    <div className="homepage">
+    <Spinner />
+    </div>
   ) : (
-    <div>
 
-      <TitleBar  />
+    <div className="">
+      <TitleBar />
       <PictureBar />
-      <DescBar  />
-      <SetFavourite/>
+      <DescBar />
+      <SetFavourite />
       <Favourites />
-      </div>
+    </div>
   );
-}
-
+};
 
 export default HomePage;
 
-
-
 /*
-DatePicker: Fix range out of bounds (undefined) and current day image of the day
-Fix Style formating, etc etc,
-Fix arrows(handle date, -1 day, +1 day, etc) -> handle in redux actions
-Handle video format AND images same time
-
-Fix: 
-Favourite Button
- -> Handle storage
- -> Save day and draw from the api directly rather than save images locally (saves space)
-*/
-
-
-/*
-DatePicker ->
-Work on redux
-
-Handle date through redux actions (global state)
-
-Got an event listener that changes date when button is pressed
-
-
+    <div >
+      <TitleBar />
+      <PictureBar />
+      <DescBar />
+      <SetFavourite />
+      <Favourites />
+    </div>
 
 */

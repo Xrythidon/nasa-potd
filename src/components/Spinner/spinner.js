@@ -1,18 +1,15 @@
 import React from "react";
-import Spinner from "react-bootstrap/Spinner";
-
+import "./spinner.styles.scss";
 
 const SpinnerContainer = () => {
-  
-const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+
 
   return (
-    <div>
-      <Spinner animation="border" role="status" style={style}>
-        <span className="sr-only">Loading...</span>
-      </Spinner>
-    </div>
+    <div className="blocks">
+  <div className="block orange"></div>
+  <div className="block blue"></div>
+</div>
   );
 };
 
-export default SpinnerContainer
+export default SpinnerContainer;

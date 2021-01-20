@@ -1,8 +1,6 @@
 import React from "react";
 
-import HomePage from "./pages/home/home.page"
-import Index from "./templates/index"
-
+import HomePage from "./pages/home/home.page";
 
 
 import "./styles/styles.scss";
@@ -13,7 +11,7 @@ import "./styles/styles.scss";
 function App() {
   return <>
   <HomePage/>
-  <Index/>
+  
   </>;
 }
 
