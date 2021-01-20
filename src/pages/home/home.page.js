@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import bgImage from "../../images/stars.jpg"
 // Components
 import { TitleBar } from "../../components/TitleBar/titleBar";
 import { PictureBar } from "../../components/PictureBar/pictureBar";
@@ -9,7 +8,6 @@ import { DescBar } from "../../components/DescBar/descBar";
 import SetFavourite from "../../components/Favourite/setFavourite";
 import Favourites from "../../components/Favourites/favourites";
 import Spinner from "../../components/Spinner/spinner";
-import isImage from "../../components/Utilities/isImage";
 
 // Custom Hooks
 import useProgressiveImage from "./useProgressiveImage";
@@ -22,7 +20,7 @@ const HomePage = () => {
   const apod = useSelector((state) => state.apod.apod);
   const selectedDate = useSelector((state) => state.apod.selectedDate); // redux name in rootReducer
   const loading = useSelector((state) => state.apod.loading); // redux name in rootReducer
-  const loaded = useSelector((state) => state.apod.loaded); // redux name in rootReducer
+
 
   const [firstPaint, setFirstPaint] = useState(false)
 
@@ -42,7 +40,6 @@ const HomePage = () => {
 
   document.body.style.backgroundImage =  (`url(${loadedImage})` || `black`);  
   document.body.style.transition = firstPaint && "background 2s ease-in-out";
-
 
   return loading ? (
     <div className="homepage">
