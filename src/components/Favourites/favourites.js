@@ -17,7 +17,9 @@ const Favourites = () => {
   const favourites = useSelector((state) => state.fav.favourites)
 
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(favourites));
+    if(favourites != null) {
+      localStorage.setItem("items", JSON.stringify(favourites));
+    }
   },[favourites])
 
   return (
