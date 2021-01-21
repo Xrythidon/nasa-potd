@@ -1,5 +1,7 @@
 export const FavouriteActionTypes = {
     SET_FAVOURITES: "SET_FAVOURITES",
     SET_FAVOURITE: "SET_FAVOURITE",
+    SET_DELETE: "SET_DELETE",
+    DELETE_ITEM: "DELETE_ITEM"
 
 }

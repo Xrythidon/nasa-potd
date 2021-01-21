@@ -1,7 +1,8 @@
 import {FavouriteActionTypes} from "./favourite.types";
 
 const INITIAL_STATE = {
-  favourites: JSON.parse(localStorage.getItem("items"))
+  favourites: JSON.parse(localStorage.getItem("items")),
+  isDeleteOn: false
 };
 
 const favouriteReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +19,18 @@ const favouriteReducer = (state = INITIAL_STATE, action) => {
         ...state,
         favourites: JSON.parse(localStorage.getItem("items"))
       };
+    case FavouriteActionTypes.SET_DELETE:
+      return {
+        ...state,
+        isDeleteOn: payload.toggle
+      }
+    case FavouriteActionTypes.DELETE_ITEM:
+      return {
+        ...state,
+       favourites: state.favourites.filter((item) => 
+       item.date !== payload.item)
+      }
+
 
     default:
       return state;

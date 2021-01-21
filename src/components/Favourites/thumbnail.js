@@ -5,35 +5,47 @@ import youtube2Thumbnail from "../Utilities/youtube2Thumbnail";
 import isImage from "../Utilities/isImage";
 
 // Actions
-import { fetchImage, setCurrentDate } from "../../redux/apod/apod.actions";
-
-import { ThemeProvider } from "@material-ui/styles";
-
-import CloseIcon from "@material-ui/icons/Close";
-import closeIconTheme from "./closeIconTheme";
-import moment from "moment";
+import { setCurrentDate } from "../../redux/apod/apod.actions";
+import { deleteItem } from "../../redux/favourites/favourite.actions";
 
 import "./thumbnail.styles.scss";
 
 const Thumbnail = ({ imgUrl, title, date }) => {
   const dispatch = useDispatch();
+  const isDeleteOn = useSelector((state) => state.fav.isDeleteOn);
+  const favourites = useSelector((state) => state.fav.favourites);
 
   const handleButton = () => {
     dispatch(setCurrentDate(date));
-    //dispatch(fetchImage(date));
+  };
 
-    // dispatch apod selectedDate
+  const handleDelete = () => {
+    dispatch(deleteItem(date))
   };
 
 
   return (
-    <div className="thumbnail" onClick={handleButton}>
+    <div className={isDeleteOn ? "thumbnail thumbnail--delete" : "thumbnail"}>
       <div className="thumbnail__imgbox">
-        {isImage(imgUrl) ? (
-          <img src={imgUrl} alt="Nasa Thumbnail" className="thumbnail__img" />
-        ) : (
-          <img src={youtube2Thumbnail(imgUrl)} alt="Nasa Thumbnail" className="thumbnail__img" />
-        )}
+        <div
+          className="thumbnail__img"
+          onClick={isDeleteOn ? handleDelete : handleButton}
+        >
+          {isImage(imgUrl) ? (
+            <img src={imgUrl} alt="Nasa Thumbnail" className="image" />
+          ) : (
+            <img
+              src={youtube2Thumbnail(imgUrl)}
+              alt="Nasa Thumbnail"
+              className="image"
+            />
+          )}
+          {isDeleteOn && (
+            <span className="remove-image" href="#">
+              &#215;
+            </span>
+          )}
+        </div>
       </div>
       <h3 className="thumbnail__title">{title}</h3>
       <p className="thumbnail__date">{date}</p>

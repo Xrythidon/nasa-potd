@@ -16,6 +16,16 @@ html {
   font-size: 1rem;
 }
 
+a {
+  color: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: currentColor;
+  text-decoration: none;
+}
+
 body {
   font-family: sans-serif;
   background-image: black;

@@ -11,3 +11,14 @@ export const setFavourite = (favourite) => ({
 export const setFavourites = () => ({
   type: FavouriteActionTypes.SET_FAVOURITES
 });
+
+export const setDelete = (toggle) => ({
+  type: FavouriteActionTypes.SET_DELETE,
+  payload: {toggle}
+})
+
+export const deleteItem = (item) => ({
+  type: FavouriteActionTypes.DELETE_ITEM,
+  payload: {item}
+})
+

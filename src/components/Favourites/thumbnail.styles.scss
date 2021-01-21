@@ -1,46 +1,87 @@
 .thumbnail {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-  
-    line-height: 10px;
-  
-    transition: all 123ms;
-  }
-  
-  
-  .thumbnail:hover {
-    color: #22a589;
-  }
-  
-  .thumbnail__title {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-top: 2px;
-    margin-bottom: 8px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-  .thumbnail__imgbox {
-    position: relative;
+  line-height: 10px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+  transition: all 123ms;
+}
 
-    height: 120px;
+.thumbnail:hover {
+  color: #22a589;
+}
 
-    
-  }
-  
+.thumbnail__title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
 
-  .thumbnail__img {
-    max-width: 80%;
-    border-radius: 3px;
-    max-height: 100%;
-    height: auto;
-  }
-  
+.thumbnail__imgbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  height: 120px;
+}
+
+.thumbnail__img {
+  position: relative;
+}
+
+.image {
+  max-width: 80%;
+  border-radius: 3px;
+  max-height: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.remove-image {
+  background: #333;
+  display: inline;
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  border-radius: 10em;
+  padding: 2px 6px 3px;
+  text-decoration: none;
+  font: 700 21px/20px sans-serif;
+  background: #555;
+  border: 3px solid #fff;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+  cursor: pointer;
+}
+.remove-image:hover {
+  background: #e54e4e;
+  color: white;
+  padding: 3px 7px 5px;
+  top: -11px;
+  right: -1px;
+}
+.remove-image:active {
+  background: #e54e4e;
+  top: -10px;
+  right: -1px;
+}
+
+.image:hover ~ .remove-image {
+  background: #e54e4e;
+  color: white;
+  padding: 3px 7px 5px;
+  top: -11px;
+  right: -1px;
+}
+
+.thumbnail--delete:hover {
+  color: #e54e4e;
+}

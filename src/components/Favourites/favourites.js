@@ -14,8 +14,10 @@ import "./favs.styles.scss";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.fav.favourites)
-  const favArray = JSON.parse(localStorage.getItem("items"));
 
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(favourites));
+  },[favourites])
 
   return (
     <div className="favs">

@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import {setDelete, deleteItem} from "../../redux/favourites/favourite.actions";
 
 const DeleteFavourite = () => {
+  const dispatch = useDispatch();
   const [deletePressed, setDeletePressed] = useState(false);
 
   useEffect(() => {
-    console.log(deletePressed);
+    dispatch(setDelete(deletePressed));
   }, [deletePressed]);
 
   return (
     <button
       onClick={() => setDeletePressed(!deletePressed)}
-      className={deletePressed ? "btn favs__btn favs__btn--delete" : "btn favs__btn"}
+      className={
+        deletePressed ? "btn favs__btn favs__btn--delete" : "btn favs__btn"
+      }
     >
       Delete{" "}
     </button>
