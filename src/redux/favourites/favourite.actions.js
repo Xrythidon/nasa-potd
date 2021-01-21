@@ -22,3 +22,7 @@ export const deleteItem = (item) => ({
   payload: {item}
 })
 
+export const deleteAllItems = () => ({
+  type: FavouriteActionTypes.DELETE_ITEMS
+})
+

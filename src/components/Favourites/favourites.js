@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import DeleteFavourite from "./deleteFavourite";
+import DeleteAllFavourites from "./deleteAllFavourites";
 
 // Actions
 import { fetchImage } from "../../redux/apod/apod.actions";
@@ -24,7 +25,7 @@ const Favourites = () => {
       <h2 className="favs__title"></h2>
       <div className="favs__btnContainer">
         <DeleteFavourite />
-        <button className="btn favs__btn favs__btn--all">Delete All</button>
+        <DeleteAllFavourites/>
       </div>
 
       <div  className={favourites && "favs__container"}>

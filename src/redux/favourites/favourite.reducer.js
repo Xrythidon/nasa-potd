@@ -30,6 +30,10 @@ const favouriteReducer = (state = INITIAL_STATE, action) => {
        favourites: state.favourites.filter((item) => 
        item.date !== payload.item)
       }
+    case FavouriteActionTypes.DELETE_ITEMS:  
+      return {
+        favourites: []
+      }
 
 
     default:
