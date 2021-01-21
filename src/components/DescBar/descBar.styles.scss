@@ -2,12 +2,21 @@
 
 @import "../../styles/variables";
 
+@font-face {
+  font-family: "Moon-Regular";
+  src:local("Moon-Regular"), url(../../fonts/Moon2.0-Regular.otf) format("woff");
+}
+
+
 .desc {
     max-width: 90%;
     margin: 0 auto;
   }
   
   .desc__text {
-    color: $secondary-font-color;
+    color: lighten($secondary-font-color, 5%);
+    font-family: "Moon-Regular";
+
+    letter-spacing: 1px;
     text-align: justify;
   }

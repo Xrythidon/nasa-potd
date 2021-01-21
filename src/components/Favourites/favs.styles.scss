@@ -20,7 +20,14 @@
     width: 45%;
     color: $primary-font-color;
     font-size: 1rem;
+  }
   
+  .favs__btn--delete {
+    background-color: red;
+  }
+
+  .favs__btn--delete:hover {
+    background-color: red;
   }
   
   .favs__btn--active{

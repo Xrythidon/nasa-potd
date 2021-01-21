@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 
+
 @import "./variables";
 
 // Base
@@ -16,7 +17,7 @@ html {
 }
 
 body {
-  font-family: "Space Grotesk";
+  font-family: sans-serif;
   background-image: black;
   background-attachment: fixed;
   background-size: cover;
