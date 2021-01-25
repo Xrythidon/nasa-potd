@@ -44,9 +44,9 @@ const Favourites = () => {
           })
         ) : (
           <div className="favs__container--empty">
-            <h1>
+            <h3>
               Your favourite images will be here! You don't have any currently.
-            </h1>
+            </h3>
           </div>
         )}
       </div>

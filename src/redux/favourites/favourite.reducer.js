@@ -32,7 +32,6 @@ const favouriteReducer = (state = INITIAL_STATE, action) => {
       }
     case FavouriteActionTypes.DELETE_ITEMS:  
       return {
-        favourites: [],
       }
 
 
