@@ -2,8 +2,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./pictureBar.styles.scss";
 
-import moment from "moment";
-
 // Actions
 import {
   fetchImage,

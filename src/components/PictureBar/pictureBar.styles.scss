@@ -2,6 +2,8 @@
 @import "../../styles/buttons";
 
 
+
+
 // Picture
 
 .picture {
@@ -22,6 +24,10 @@
     justify-content: space-evenly;
   }
   
+  .picture__btn-text {
+    font-family: "Moon-Regular";
+    letter-spacing: 1px;
+  }
 
   
   .picture__holder {

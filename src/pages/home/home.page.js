@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import "./home.styles.scss";
+
 // Components
 import { TitleBar } from "../../components/TitleBar/titleBar";
 import { PictureBar } from "../../components/PictureBar/pictureBar";
@@ -21,8 +23,7 @@ const HomePage = () => {
   const selectedDate = useSelector((state) => state.apod.selectedDate); // redux name in rootReducer
   const loading = useSelector((state) => state.apod.loading); // redux name in rootReducer
 
-
-  const [firstPaint, setFirstPaint] = useState(false)
+  const [firstPaint, setFirstPaint] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -32,43 +33,29 @@ const HomePage = () => {
   }, [selectedDate, dispatch]);
 
   useEffect(() => {
-    setFirstPaint(true)
-  }, [])
+    setFirstPaint(true);
+  }, []);
 
-  
-  const loadedImage = useProgressiveImage(apod.url,"black");
+  const loadedImage = useProgressiveImage(apod.url, "black");
 
-  document.body.style.backgroundImage =  (`url(${loadedImage})` || `black`);  
+  document.body.style.backgroundImage = `url(${loadedImage})`;
   document.body.style.transition = firstPaint && "background 2s ease-in-out";
 
   return loading ? (
     <div className="homepage">
-    <Spinner />
+      <Spinner />
     </div>
   ) : (
-
-    <div  className="">
-
+    <div className="">
       <TitleBar />
       <PictureBar />
-      <DescBar />
-      <SetFavourite />
-      <Favourites />
+      <div className="lowerContainer">
+        <DescBar />
+        <SetFavourite />
+        <Favourites />
+      </div>
     </div>
   );
 };
 
 export default HomePage;
-
-/*
-    <div >
-      <TitleBar />
-      <PictureBar />
-      <DescBar />
-      <SetFavourite />
-      <Favourites />
-    </div>
-
-    (isImage(apod.url) ? `url(${apod.url})` : `url(${bgImage})`
-
-*/

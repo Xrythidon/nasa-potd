@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 
+@font-face {
+  font-family: "Moon-Bold";
+  src:local("Moon-Bold"), url(../fonts/Moon2.0-Bold.otf) format("woff");
+}
+@font-face {
+  font-family: "Moon-Light";
+  src:local("Moon-Light"), url(../fonts/Moon2.0-Light.otf) format("woff");
+}
+@font-face {
+  font-family: "Moon-Regular";
+  src:local("Moon-Regular"), url(../fonts/Moon2.0-Regular.otf) format("woff");
+}
+
 
 @import "./variables";
 

@@ -1,13 +1,32 @@
+@import "./variables";
+
+
+@font-face {
+  font-family: "Moon";
+  src:local("Moon"), url(../fonts/Moon2.0-Bold.otf) format("woff");
+}
+
+
 // Button
 
 .btn {
     padding: 8px 14px;
     border: 2px solid transparent;
+    font-family: "Moon";
+    letter-spacing: 1px;
     border-radius: 2px;
-    color: $primary-btn-color;
-    background-color: $secondary-btn-color;
+    color:  $secondary-btn-color;
+    background-color: rgba($color: $primary-btn-color, $alpha: 1) ;
     transition: all 123ms;
     font-size: 0.75rem;
+    box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.028),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.04),
+  0 12.5px 10px rgba(0, 0, 0, 0.05),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.06),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.072),
+  0 100px 80px rgba(0, 0, 0, 0.1)
+;
   }
   
   .btn:hover {

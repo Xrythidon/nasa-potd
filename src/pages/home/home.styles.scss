@@ -1,0 +1,16 @@
+.lowerContainer {
+  max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .lowerContainer {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1440px) {
+  .lowerContainer {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
