@@ -42,7 +42,7 @@ export const PictureBar = () => {
 
   const setSelectedDate = (date) => {
     dispatch(setCurrentDate(date));
-    history.push(`/${formatDate(selectedDate)}`)
+    history.push(`/${formatDate(date)}`)
   };
 
   const next = () => {

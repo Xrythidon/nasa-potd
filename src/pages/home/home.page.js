@@ -44,8 +44,8 @@ const HomePage = () => {
     if (id) {
       if (id.match(regexDate)) {
         dispatch(fetchImage(id));
-        console.log("fetchhere?", id)
-        console.log("selectedDate", selectedDate)
+      //  console.log("fetchhere?", id)
+       // console.log("selectedDate", selectedDate)
       } else {
         
         console.log("404");
@@ -59,6 +59,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(setCurrentDate(id));
+    console.log("??")
     setFirstPaint(true);
   }, []);
 

@@ -24,7 +24,8 @@ const Thumbnail = ({ imgUrl, title, date }) => {
 
   const handleButton = () => {
     dispatch(setCurrentDate(date));
-    history.push(`/${formatDate(selectedDate)}`);
+    history.push(`/${formatDate(date)}`);
+    console.log("touch thumbnail")
   };
 
   const handleDelete = () => {
