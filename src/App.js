@@ -9,10 +9,9 @@ import "./styles/styles.scss";
 function App() {
   return (
     <Router>
-    <Switch>
         <Route path="/:id" children={<HomePage />} replace/>
         <Route exact path="/"><HomePage /> </Route>
-      </Switch>
+
     </Router>
   );
 }

@@ -6,7 +6,7 @@ import moment from "moment";
 
 const INITIAL_STATE = {
   apod: {},
-  selectedDate: null,
+  selectedDate: moment(),
   loading: false,
   loaded: false,
   error: null,

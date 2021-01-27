@@ -36,7 +36,7 @@ const Thumbnail = ({ imgUrl, title, date }) => {
       <div className="thumbnail__imgbox">
         <div
           className="thumbnail__img"
-          onClick={isDeleteOn ? handleDelete : handleButton}
+          onClick={isDeleteOn ? handleDelete :  handleButton}
         >
           {isImage(imgUrl) ? (
             <img src={imgUrl} alt="Nasa Thumbnail" className="image" />

@@ -58,6 +58,7 @@ const HomePage = () => {
   }, [ id]);
 
   useEffect(() => {
+    dispatch(setCurrentDate(id));
     setFirstPaint(true);
   }, []);
 
