@@ -25,6 +25,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 import DatePicker from "../DatePicker/datePicker.component.js";
 
+
 export const PictureBar = () => {
   const apod = useSelector((state) => state.apod.apod);
   const loaded = useSelector((state) => state.apod.loaded);
@@ -41,20 +42,29 @@ export const PictureBar = () => {
 
   const setSelectedDate = (date) => {
     dispatch(setCurrentDate(date));
+    history.push(`/${formatDate(selectedDate)}`)
   };
 
   const next = () => {
     dispatch(nextDateDay());
+    history.push(`/${formatDate(selectedDate)}`)
   };
 
   const prev = () => {
     dispatch(prevDateDay());
+    history.push(`/${formatDate(selectedDate)}`)
   };
 
-  useEffect( ( ) => {
-    history.push(`/${formatDate(selectedDate)}`)
-    console.log(selectedDate);
-  }, [selectedDate])
+  // useEffect( ( ) => {
+
+
+  //   if (selectedDate != null ) {
+  //     history.push(`/${formatDate(selectedDate)}`)
+  //   }
+
+  //   console.log(selectedDate,"pictureBar");
+
+  // }, [selectedDate])
 
   return (
     <div className="picture">

@@ -6,7 +6,7 @@ import moment from "moment";
 
 const INITIAL_STATE = {
   apod: {},
-  selectedDate: moment(),
+  selectedDate: null,
   loading: false,
   loaded: false,
   error: null,
@@ -33,6 +33,7 @@ const apodReducer = (state = INITIAL_STATE, action) => {
     case ApodActionTypes.FETCH_IMAGE_SUCCESS:
       return {
         ...state,
+//        selectedDate: moment(payload.apod.date),
         loading: false,
         apod: payload.apod,
         loaded: true,

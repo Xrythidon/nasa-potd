@@ -21,6 +21,8 @@ import formatDate from "../../components/Utilities/formatDate";
 import { fetchImage, setCurrentDate } from "../../redux/apod/apod.actions";
 import { setFavourites } from "../../redux/favourites/favourite.actions";
 
+import moment from "moment";
+
 // Routing
 import { useParams, useHistory } from "react-router-dom";
 
@@ -42,12 +44,14 @@ const HomePage = () => {
     if (id) {
       if (id.match(regexDate)) {
         dispatch(fetchImage(id));
-        console.log("fetchhere?")
+        console.log("fetchhere?", id)
+        console.log("selectedDate", selectedDate)
       } else {
+        
         console.log("404");
       }
     } else {
-     // dispatch(fetchImage(selectedDate));
+     dispatch(fetchImage(moment()));
     }
 
     dispatch(setFavourites());

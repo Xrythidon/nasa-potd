@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import youtube2Thumbnail from "../Utilities/youtube2Thumbnail";
 import isImage from "../Utilities/isImage";
+import formatDate from "../Utilities/formatDate";
+
+// Routing
+import { useHistory } from "react-router-dom";
+
 
 // Actions
 import { setCurrentDate } from "../../redux/apod/apod.actions";
@@ -11,18 +16,20 @@ import { deleteItem } from "../../redux/favourites/favourite.actions";
 import "./thumbnail.styles.scss";
 
 const Thumbnail = ({ imgUrl, title, date }) => {
+  let history = useHistory();
   const dispatch = useDispatch();
+  const selectedDate = useSelector((state) => state.apod.selectedDate)
   const isDeleteOn = useSelector((state) => state.fav.isDeleteOn);
   const favourites = useSelector((state) => state.fav.favourites);
 
   const handleButton = () => {
     dispatch(setCurrentDate(date));
+    history.push(`/${formatDate(selectedDate)}`);
   };
 
   const handleDelete = () => {
-    dispatch(deleteItem(date))
+    dispatch(deleteItem(date));
   };
-
 
   return (
     <div className={isDeleteOn ? "thumbnail thumbnail--delete" : "thumbnail"}>

@@ -4,9 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import DeleteFavourite from "./deleteFavourite";
 import DeleteAllFavourites from "./deleteAllFavourites";
 
-// Actions
-import { fetchImage } from "../../redux/apod/apod.actions";
-
 import Thumbnail from "./thumbnail";
 
 import "./favs.styles.scss";
