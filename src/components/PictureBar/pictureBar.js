@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./pictureBar.styles.scss";
+
+// Routing
+import { useHistory } from "react-router-dom";
 
 // Actions
 import {
@@ -10,7 +13,9 @@ import {
   setCurrentDate,
 } from "../../redux/apod/apod.actions";
 
+// Utilities
 import isImage from "../Utilities/isImage";
+import formatDate from "../Utilities/formatDate";
 
 import { Picture } from "./picture";
 import Video from "./video";
@@ -19,7 +24,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 import DatePicker from "../DatePicker/datePicker.component.js";
-import { Visibility } from "@material-ui/icons";
+
 
 export const PictureBar = () => {
   const apod = useSelector((state) => state.apod.apod);
@@ -29,23 +34,37 @@ export const PictureBar = () => {
   const isNextDayToday = useSelector((state) => state.apod.isNextDayToday);
   const isFirstApodDay = useSelector((state) => state.apod.isFirstApodDay);
 
+  let history = useHistory();
+
 
 
   const dispatch = useDispatch();
 
   const setSelectedDate = (date) => {
     dispatch(setCurrentDate(date));
+    history.push(`/${formatDate(date)}`)
   };
 
   const next = () => {
     dispatch(nextDateDay());
-    dispatch(fetchImage(selectedDate));
+    history.push(`/${formatDate(selectedDate)}`)
   };
 
   const prev = () => {
     dispatch(prevDateDay());
-    dispatch(fetchImage(selectedDate));
+    history.push(`/${formatDate(selectedDate)}`)
   };
+
+  // useEffect( ( ) => {
+
+
+  //   if (selectedDate != null ) {
+  //     history.push(`/${formatDate(selectedDate)}`)
+  //   }
+
+  //   console.log(selectedDate,"pictureBar");
+
+  // }, [selectedDate])
 
   return (
     <div className="picture">

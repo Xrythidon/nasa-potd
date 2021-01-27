@@ -9,13 +9,11 @@ export const setCurrentDate = (selectedDate) => ({
   payload: { selectedDate },
 });
 
-export const nextDateDay = (selectedDate) => ({
+export const nextDateDay = () => ({
   type: ApodActionTypes.NEXT_DATE_DAY,
-  payload: { selectedDate },
 });
-export const prevDateDay = (selectedDate) => ({
+export const prevDateDay = () => ({
   type: ApodActionTypes.PREV_DATE_DAY,
-  payload: { selectedDate },
 });
 
 export const fetchImageBegin = () => ({

@@ -14,9 +14,17 @@ import Spinner from "../../components/Spinner/spinner";
 // Custom Hooks
 import useProgressiveImage from "./useProgressiveImage";
 
+// Utils
+import formatDate from "../../components/Utilities/formatDate";
+
 // Actions
-import { fetchImage } from "../../redux/apod/apod.actions";
+import { fetchImage, setCurrentDate } from "../../redux/apod/apod.actions";
 import { setFavourites } from "../../redux/favourites/favourite.actions";
+
+import moment from "moment";
+
+// Routing
+import { useParams, useHistory } from "react-router-dom";
 
 const HomePage = () => {
   const apod = useSelector((state) => state.apod.apod);
@@ -27,12 +35,31 @@ const HomePage = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchImage(selectedDate));
-    dispatch(setFavourites());
-  }, [selectedDate, dispatch]);
+  let history = useHistory();
+  const { id } = useParams();
+
+  let regexDate = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
 
   useEffect(() => {
+    if (id) {
+      if (id.match(regexDate)) {
+        dispatch(fetchImage(id));
+      //  console.log("fetchhere?", id)
+       // console.log("selectedDate", selectedDate)
+      } else {
+        
+        console.log("404");
+      }
+    } else {
+     dispatch(fetchImage(moment()));
+    }
+
+    dispatch(setFavourites());
+  }, [ id]);
+
+  useEffect(() => {
+    dispatch(setCurrentDate(id));
+    console.log("??")
     setFirstPaint(true);
   }, []);
 
