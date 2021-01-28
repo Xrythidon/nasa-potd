@@ -1,0 +1,25 @@
+
+.container {
+  width: 100%;
+  height: 100vh;
+  font-family: "Moon-Regular";
+  letter-spacing: 1px;
+  display: flex;
+}
+
+.mp__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: auto auto;
+}
+
+.mp__title {
+  font-size: 6rem;
+}
+
+@media (min-width: 900px) {
+  .mp__title {
+    font-size: 12rem;
+  }
+}

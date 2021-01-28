@@ -42,12 +42,10 @@ const HomePage = () => {
 
   useEffect(() => {
     if (id) {
-      if (id.match(regexDate)) {
+      if (id.match(regexDate)/*Need to add max date check */) {
         dispatch(fetchImage(id));
-      //  console.log("fetchhere?", id)
-       // console.log("selectedDate", selectedDate)
       } else {
-        
+        history.push(`/404`)
         console.log("404");
       }
     } else {
