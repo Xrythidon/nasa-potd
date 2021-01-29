@@ -18,9 +18,7 @@ import "./thumbnail.styles.scss";
 const Thumbnail = ({ imgUrl, title, date }) => {
   let history = useHistory();
   const dispatch = useDispatch();
-  const selectedDate = useSelector((state) => state.apod.selectedDate)
   const isDeleteOn = useSelector((state) => state.fav.isDeleteOn);
-  const favourites = useSelector((state) => state.fav.favourites);
 
   const handleButton = () => {
     dispatch(setCurrentDate(date));

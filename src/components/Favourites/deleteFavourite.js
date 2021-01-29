@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import {setDelete, deleteItem} from "../../redux/favourites/favourite.actions";
+import {setDelete} from "../../redux/favourites/favourite.actions";
 
 const DeleteFavourite = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const DeleteFavourite = () => {
 
   useEffect(() => {
     dispatch(setDelete(deletePressed));
-  }, [deletePressed]);
+  }, [deletePressed, dispatch]);
 
   return (
     <button

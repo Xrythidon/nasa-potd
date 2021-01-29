@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 
 const useProgressiveImage = (src,bgImage) => {  
   const [sourceLoaded, setSourceLoaded] = useState(`url(${bgImage})`)

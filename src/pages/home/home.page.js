@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment"
 
 import "./home.styles.scss";
 
@@ -15,20 +16,19 @@ import Spinner from "../../components/Spinner/spinner";
 import useProgressiveImage from "./useProgressiveImage";
 
 // Utils
-import formatDate from "../../components/Utilities/formatDate";
+import isDate from "../../components/Utilities/isDate";
+import checkDateConstraints from "../../components/Utilities/checkDateConstraints";
 
 // Actions
-import { fetchImage, setCurrentDate } from "../../redux/apod/apod.actions";
+import { fetchImage } from "../../redux/apod/apod.actions";
 import { setFavourites } from "../../redux/favourites/favourite.actions";
 
-import moment from "moment";
 
 // Routing
 import { useParams, useHistory } from "react-router-dom";
 
 const HomePage = () => {
   const apod = useSelector((state) => state.apod.apod);
-  const selectedDate = useSelector((state) => state.apod.selectedDate); // redux name in rootReducer
   const loading = useSelector((state) => state.apod.loading); // redux name in rootReducer
 
   const [firstPaint, setFirstPaint] = useState(false);
@@ -38,26 +38,22 @@ const HomePage = () => {
   let history = useHistory();
   const { id } = useParams();
 
-  let regexDate = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
-
   useEffect(() => {
     if (id) {
-      if (id.match(regexDate)/*Need to add max date check */) {
+      if (isDate(id) && checkDateConstraints(id)) {
         dispatch(fetchImage(id));
       } else {
-        history.push(`/404`)
+        history.replace(`/404`);
         console.log("404");
       }
     } else {
-     dispatch(fetchImage(moment()));
+      dispatch(fetchImage(moment()));
     }
 
     dispatch(setFavourites());
-  }, [ id]);
+  }, [id, dispatch, history]);
 
   useEffect(() => {
-    dispatch(setCurrentDate(id));
-    console.log("??")
     setFirstPaint(true);
   }, []);
 

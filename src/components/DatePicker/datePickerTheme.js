@@ -13,6 +13,7 @@ const datePickerTheme = createMuiTheme({
         color: "#afb7d1",
         borderBottom: "2px solid #afb7d1",
         marginTop: "15px",
+        cursor: "pointer"
       },
       root: {
         color: "#afb7d1",

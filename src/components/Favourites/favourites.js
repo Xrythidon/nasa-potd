@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import DeleteFavourite from "./deleteFavourite";
 import DeleteAllFavourites from "./deleteAllFavourites";
@@ -21,7 +21,6 @@ const Favourites = () => {
 
   return (
     <div className="favs">
-      <h2 className="favs__title"></h2>
       <div className="favs__btnContainer">
         <DeleteFavourite />
         <DeleteAllFavourites/>
