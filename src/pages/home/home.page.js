@@ -20,7 +20,7 @@ import isDate from "../../components/Utilities/isDate";
 import checkDateConstraints from "../../components/Utilities/checkDateConstraints";
 
 // Actions
-import { fetchImage } from "../../redux/apod/apod.actions";
+import { fetchImage, setCurrentDate } from "../../redux/apod/apod.actions";
 import { setFavourites } from "../../redux/favourites/favourite.actions";
 
 
@@ -54,6 +54,7 @@ const HomePage = () => {
   }, [id, dispatch, history]);
 
   useEffect(() => {
+    dispatch(setCurrentDate(id));
     setFirstPaint(true);
   }, []);
 
