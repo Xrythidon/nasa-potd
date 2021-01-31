@@ -23,16 +23,29 @@
   
   .favs__btn--delete {
     background-color: red;
+    color: white;
   }
 
   .favs__btn--delete:hover {
-    background-color: red;
+    background-color: darken(red, 15%);
   }
   
   .favs__btn--active{
     background-color: $active-btn-color;
     color: $primary-bg-color;
   }
+
+
+  .favs__btn--cancel {
+    background-color: $hover-btn-color;
+    color: white;
+    margin-left: 20px;
+
+  }
+  .favs__btn--cancel:hover {
+    background-color: darken($hover-btn-color, 50%);
+  }
+
    .favs__title {
     margin-bottom: 15px;
     font-weight: 300;
@@ -47,7 +60,7 @@
   
     justify-content: center;
 
-    margin-top: 40px;
+    margin-top: 30px;
   }
 
   .favs__container--empty {
@@ -58,9 +71,11 @@
     letter-spacing: 1px;
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 960px) {
+
     .favs__container {
       justify-content: left;
+      margin-top: 120px;
     }
   }
   

@@ -1,0 +1,31 @@
+.modal__btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  margin-bottom: 50px;
+}
+
+.modal__title {
+  font-size: 3rem;
+  margin: 15px 15px;
+  padding: 0px;
+  font-family: "Moon-Regular";
+  letter-spacing: 2px;
+}
+
+.modal__text {
+  font-family: "Moon-Regular";
+  letter-spacing: 2px;
+}
+
+@media (min-width: 960px) {
+  .modal__btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 15px;
+    margin-bottom: 15px;
+
+  }
+}

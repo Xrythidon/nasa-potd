@@ -1,10 +1,7 @@
 @import "./variables";
 
 
-@font-face {
-  font-family: "Moon";
-  src:local("Moon"), url(../fonts/Moon2.0-Bold.otf) format("woff");
-}
+
 
 
 // Button
@@ -13,7 +10,7 @@
     padding: 8px 14px;
     border: 2px solid transparent;
     cursor: pointer;
-    font-family: "Moon";
+    font-family: "Moon-Regular";
     letter-spacing: 1px;
     border-radius: 2px;
     color:  $secondary-btn-color;
