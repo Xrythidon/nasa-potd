@@ -10,7 +10,10 @@ const datePickerTheme = createMuiTheme({
     },
     MuiInputBase: {
       input: {
+        fontFamily: "moon-regular",
+        letterSpacing: "2px",
         color: "#afb7d1",
+        fontSize: "24px",
         borderBottom: "2px solid #afb7d1",
         marginTop: "15px",
         cursor: "pointer"

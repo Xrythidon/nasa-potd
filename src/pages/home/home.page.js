@@ -12,6 +12,9 @@ import SetFavourite from "../../components/Favourite/setFavourite";
 import Favourites from "../../components/Favourites/favourites";
 import Spinner from "../../components/Spinner/spinner";
 
+//Tests
+import Toasts from "../../components/Toasts/toasts";
+
 // Custom Hooks
 import useProgressiveImage from "./useProgressiveImage";
 
@@ -71,6 +74,7 @@ const HomePage = () => {
     <div className="">
       <TitleBar />
       <PictureBar />
+      <Toasts/>
       <div className="lowerContainer">
         <DescBar />
         <SetFavourite />

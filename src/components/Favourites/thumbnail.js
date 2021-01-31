@@ -8,10 +8,10 @@ import formatDate from "../Utilities/formatDate";
 // Routing
 import { useHistory } from "react-router-dom";
 
-
 // Actions
 import { setCurrentDate } from "../../redux/apod/apod.actions";
 import { deleteItem } from "../../redux/favourites/favourite.actions";
+import { setToast } from "../../redux/toasts/toasts.actions";
 
 import "./thumbnail.styles.scss";
 
@@ -23,11 +23,12 @@ const Thumbnail = ({ imgUrl, title, date }) => {
   const handleButton = () => {
     dispatch(setCurrentDate(date));
     history.push(`/${formatDate(date)}`);
-    console.log("touch thumbnail")
+    console.log("touch thumbnail");
   };
 
   const handleDelete = () => {
     dispatch(deleteItem(date));
+    dispatch(setToast("error", `Deleted from favourites "${title}"`));
   };
 
   return (
@@ -35,7 +36,7 @@ const Thumbnail = ({ imgUrl, title, date }) => {
       <div className="thumbnail__imgbox">
         <div
           className="thumbnail__img"
-          onClick={isDeleteOn ? handleDelete :  handleButton}
+          onClick={isDeleteOn ? handleDelete : handleButton}
         >
           {isImage(imgUrl) ? (
             <img src={imgUrl} alt="Nasa Thumbnail" className="image" />

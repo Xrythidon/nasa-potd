@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {setFavourite} from "../../redux/favourites/favourite.actions"
+import {setToast} from "../../redux/toasts/toasts.actions";
 
 import "./fav.styles.scss";
 
@@ -42,13 +43,15 @@ const SetFavourite = () => {
       if (oldData.some((item) => item["title"] === newData.title)) {
         console.log(`Duplicate entry found of ${newData.title}`);
         //This is where you dispatch duplicate entry notification
+        dispatch(setToast("warning",`Duplicate entry found of "${newData.title}"`))
         return;
       }
     }
 
     oldData.push(newData);
     // This is where you can dispatch succesful favourite notification
-    // This is where you will dispatch add favourite to redux state
+    dispatch(setToast("success", `Added to favourites "${newData.title}"`))
+    
     dispatch(setFavourite(oldData));
     localStorage.setItem("items", JSON.stringify(oldData));
 
