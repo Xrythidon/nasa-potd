@@ -4,7 +4,7 @@ A small app that shows NASA's interesting astronomical pictures, with a short de
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+The motivation behind this project initially was from a coding interview, however I fell in love with the idea of making a beautiful user experience for space picture lovers
 
 ## Build
 
@@ -36,7 +36,5 @@ REACT_APP_NASA_ENDPOINT=https://api.nasa.gov/
 and insert your API key.
 
 ## License
-
-A short snippet describing the license (MIT, Apache etc)
 
 MIT © [Alex D]()
