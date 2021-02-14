@@ -36,12 +36,15 @@ const Thumbnail = ({ imgUrl, title, date }) => {
       <div className="thumbnail__imgbox">
         <div
           className="thumbnail__img"
+          loading="lazy"
+          alt="Nasa Thumbnail"
           onClick={isDeleteOn ? handleDelete : handleButton}
         >
           {isImage(imgUrl) ? (
             <img src={imgUrl} alt="Nasa Thumbnail" className="image" />
           ) : (
             <img
+              loading="lazy"
               src={youtube2Thumbnail(imgUrl)}
               alt="Nasa Thumbnail"
               className="image"
