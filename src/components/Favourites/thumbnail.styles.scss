@@ -1,9 +1,12 @@
 .thumbnail {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
+  height: auto;
+  //in-height: 100px;
+  
 
   line-height: 10px;
 
@@ -40,14 +43,15 @@
 }
 
 .thumbnail__img {
-  position: relative;
+  //position: relative;
 }
 
 .image {
   max-width: 80%;
   border-radius: 3px;
-  max-height: 100%;
-  height: auto;
+  height: 100px;
+  object-fit: cover;
+//  object-position: top center;
   cursor: pointer;
 }
 
